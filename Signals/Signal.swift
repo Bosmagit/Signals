@@ -195,7 +195,7 @@ public class SignalListener<T> {
                 queuedData = data
                 let dispatchQueue = self.dispatchQueue == nil ? dispatch_get_main_queue() : self.dispatchQueue
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay! * Double(NSEC_PER_SEC))),
-                    dispatchQueue) { [weak self] () -> Void in
+                    dispatchQueue!) { [weak self] () -> Void in
                         if let definiteSelf = self {
                             let data = definiteSelf.queuedData!
                             definiteSelf.queuedData = nil
